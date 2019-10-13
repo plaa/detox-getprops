@@ -17,11 +17,23 @@
     "@babel/runtime": "^7.5.0",
     "@react-native-community/eslint-config": "^0.0.3",
     "babel-jest": "^24.1.0",
+    "detox": "^14.4.1",
     "jest": "^24.1.0",
     "metro-react-native-babel-preset": "^0.51.1",
     "react-test-renderer": "16.8.1"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.debug": {
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/DetoxGetpropsExample.app",
+        "build": "xcodebuild -workspace ios/DetoxGetpropsExample.xcworkspace -scheme DetoxGetpropsExample -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 7"
+      }
+    },
+    "test-runner": "jest"
   }
 }
