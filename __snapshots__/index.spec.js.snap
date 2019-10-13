@@ -1,5 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`parseMessage should parse Android matching string 1`] = `
+Object {
+  "has-focus": "false",
+  "has-focusable": "false",
+  "has-input-connection": "false",
+  "has-window-focus": "true",
+  "height": "85",
+  "id": "15",
+  "ime-target": "false",
+  "input-type": "0",
+  "is-clickable": "false",
+  "is-enabled": "true",
+  "is-focusable": "false",
+  "is-focused": "false",
+  "is-layout-requested": "false",
+  "is-selected": "false",
+  "layout-params": "android.view.ViewGroup$LayoutParams@7d5cb36",
+  "root-is-layout-requested": "false",
+  "tag": "heading",
+  "text": "Step' One",
+  "type": "ReactTextView",
+  "visibility": "VISIBLE",
+  "width": "954",
+  "x": "63.0",
+  "y": "84.0",
+}
+`;
+
+exports[`parseMessage should parse Android matching string 2`] = `
+Object {
+  "has-focus": "false",
+  "has-focusable": "false",
+  "has-input-connection": "false",
+  "has-window-focus": "true",
+  "height": "85",
+  "id": "15",
+  "ime-target": "false",
+  "input-type": "0",
+  "is-clickable": "false",
+  "is-enabled": "true",
+  "is-focusable": "false",
+  "is-focused": "false",
+  "is-layout-requested": "false",
+  "is-selected": "false",
+  "layout-params": "android.view.ViewGroup$LayoutParams@7d5cb36",
+  "root-is-layout-requested": "false",
+  "tag": "heading",
+  "text": "Step, One",
+  "type": "ReactTextView",
+  "visibility": "VISIBLE",
+  "width": "954",
+  "x": "63.0",
+  "y": "84.0",
+}
+`;
+
 exports[`parseMessage should parse iOS matching string 1`] = `
 Object {
   "AX": "Y",

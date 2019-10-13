@@ -35,29 +35,41 @@ const fetchText = async elem => {
 const parseMessage = message => {
   if (message.includes('"Description Glossary"')) {
     // iOS message
-    let matches, key, value;
+    let key, value;
     const line = message.split('\n').find(s => s.includes('"E":'));
-    matches = line.match(/^\s*"E":\s*"(.*)",\s*$/);
+    const matches = line.match(/^\s*"E":\s*"<([a-zA-Z0-9-]+):0x[0-9a-fA-F]+; (.*)>",?$/);
     if (matches) {
-      const result = {};
-      let str = matches[1];
-      const [, type] = str.match(/^<([a-zA-Z0-9]+):/);
-      [, str] = str.match(/^<[^;]+; (.*)>\s*$/);
-      while ((matches = str.match(/^([a-zA-Z0-9.]+)=(.*?); ([a-zA-Z0-9.]+=.*)$/))) {
-        [, key, value, str] = matches;
-        result[key] = unquote(value);
-      }
+      const [, type, str] = matches;
+      const result = parseLine(str, '; ');
       result.type = type;
       result.text = result['AX.label'];
       return result;
     }
   } else if (message.includes('with text: is')) {
     // Android message
-    // FIXME: Implement
+    const line = message.split('\n').find(s => s.includes('Got:'));
+    const matches = line.match(/^\s*Got: "([a-zA-Z0-9-]+)\{(.*)\}"\s*$/);
+    if (matches) {
+      const [, type, str] = matches;
+      const result = parseLine(str, ', ');
+      result.type = type;
+      return result;
+    }
   }
   throw new Error(
     `Could not parse exception message. detox-getprops library might not be compatible with this version of Detox.\n\nMessage:\n${message}`
   );
+};
+
+const parseLine = (str, separator) => {
+  const result = {};
+  let matches;
+  var re = new RegExp(`^([a-zA-Z0-9.-]+)=(.*?)${separator}([a-zA-Z0-9.-]+=.*)$`);
+  while ((matches = str.match(re))) {
+    [, key, value, str] = matches;
+    result[key] = unquote(value);
+  }
+  return result;
 };
 
 const unquote = str => {

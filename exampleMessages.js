@@ -61,7 +61,7 @@ const iosMessages = {
 const androidMessages = {
   "Step' One": `'(with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)' doesn't match the selected view.
 Expected: (with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)
-     Got: "ReactTextView{id=15, visibility=VISIBLE, width=954, height=85, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.view.ViewGroup$LayoutParams@7d5cb36, tag=heading, root-is-layout-requested=false, has-input-connection=false, x=63.0, y=84.0, text=Step, One, input-type=0, ime-target=false, has-links=false}"`,
+     Got: "ReactTextView{id=15, visibility=VISIBLE, width=954, height=85, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.view.ViewGroup$LayoutParams@7d5cb36, tag=heading, root-is-layout-requested=false, has-input-connection=false, x=63.0, y=84.0, text=Step' One, input-type=0, ime-target=false, has-links=false}"`,
 
   'Step, One': `'(with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)' doesn't match the selected view.
 Expected: (with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)
