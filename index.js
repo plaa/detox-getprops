@@ -41,6 +41,7 @@ const parseMessage = message => {
     if (matches) {
       const [, type, str] = matches;
       const result = parseLine(str, '; ');
+      result.device = 'ios';
       result.type = type;
       result.text = result['AX.label'];
       return result;
@@ -52,6 +53,7 @@ const parseMessage = message => {
     if (matches) {
       const [, type, str] = matches;
       const result = parseLine(str, ', ');
+      result.device = 'android';
       result.type = type;
       return result;
     }
