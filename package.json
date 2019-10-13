@@ -12,6 +12,7 @@
   "author": "Sampo Juustila <sampo.juustila@iki.fi>",
   "license": "ISC",
   "devDependencies": {
+    "detox": "^14.4.1",
     "jest": "^24.9.0"
   },
   "jest": {
@@ -19,5 +20,8 @@
       "/node_modules/",
       "/example/"
     ]
+  },
+  "peerDependencies": {
+    "detox": "^14.4.1"
   }
 }

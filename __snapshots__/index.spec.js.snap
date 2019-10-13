@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseMessage should parse iOS matching string 1`] = `
+Object {
+  "AX": "Y",
+  "AX.activationPoint": "{187.5, 298.25}",
+  "AX.focused": "N",
+  "AX.frame": "{{24, 283.5}, {327, 29.5}}",
+  "AX.id": "heading",
+  "AX.label": "Step' One",
+  "AX.traits": "UIAccessibilityTraitStaticText",
+  "frame": "{{24, 0}, {327, 29.5}}",
+  "text": "Step' One",
+  "type": "RCTTextView",
+}
+`;
+
+exports[`parseMessage should parse iOS matching string 2`] = `
+Object {
+  "AX": "Y",
+  "AX.activationPoint": "{187.5, 298.25}",
+  "AX.focused": "N",
+  "AX.frame": "{{24, 283.5}, {327, 29.5}}",
+  "AX.id": "heading",
+  "AX.label": "Step, One",
+  "AX.traits": "UIAccessibilityTraitStaticText",
+  "frame": "{{24, 0}, {327, 29.5}}",
+  "text": "Step, One",
+  "type": "RCTTextView",
+}
+`;
