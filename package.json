@@ -1,0 +1,23 @@
+{
+  "name": "detox-getprops",
+  "version": "1.0.0",
+  "description": "Fetch element props using Detox",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "detox"
+  ],
+  "author": "Sampo Juustila <sampo.juustila@iki.fi>",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/example/"
+    ]
+  }
+}
