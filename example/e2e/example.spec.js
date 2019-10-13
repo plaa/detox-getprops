@@ -1,9 +1,11 @@
+const {device, expect: expectDetox, element, by, waitFor} = require('detox');
+
 describe('Example', () => {
   beforeEach(async () => {
     await device.reloadReactNative();
   });
 
   it('should work', async () => {
-    await expect(element(by.id('heading'))).toBeVisible();
+    await expectDetox(element(by.id('heading'))).toBeVisible();
   });
 });
