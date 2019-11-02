@@ -2,7 +2,7 @@ jest.mock('detox');
 
 const { expect: expectDetox } = require('detox');
 const { getText, getProps, parseMessage } = require('./index');
-const { iosMessages, androidMessages } = require('./exampleMessages');
+const { iosMessages, androidMessages, iosNotFound, androidNotFound } = require('./exampleMessages');
 
 describe('getText', () => {
   it('should return iOS text', async () => {
@@ -21,6 +21,34 @@ describe('getText', () => {
     });
     const text = await getText(elem);
     expect(text).toEqual('Step, One');
+  });
+
+  it('should throw exception for not found element on Android', async () => {
+    const elem = 'boom';
+    expectDetox.mockImplementation(() => {
+      throw new Error(androidNotFound);
+    });
+    let threw = false;
+    try {
+      await getText(elem);
+    } catch (e) {
+      threw = true;
+    }
+    expect(threw).toBeTruthy();
+  });
+
+  it('should throw exception for not found element on iOS', async () => {
+    const elem = 'boom';
+    expectDetox.mockImplementation(() => {
+      throw new Error(iosNotFound);
+    });
+    let threw = false;
+    try {
+      await getText(elem);
+    } catch (e) {
+      threw = true;
+    }
+    expect(threw).toBeTruthy();
   });
 
   it('should throw exception for unknown exception messages', async () => {

@@ -17,7 +17,9 @@ const getProps = async elem => {
 const parseMessage = message => {
   if (message.includes('"Description Glossary"')) {
     // iOS message
-    let key, value;
+    if (message.includes('Cannot find UI Element')) {
+      throw new Error('Could not find element');
+    }
     const line = message.split('\n').find(s => s.includes('"E":'));
     const matches = line.match(/^\s*"E":\s*"<([a-zA-Z0-9-]+):0x[0-9a-fA-F]+; (.*)>",?$/);
     if (matches) {
@@ -30,6 +32,9 @@ const parseMessage = message => {
     }
   } else if (message.includes('with text: is')) {
     // Android message
+    if (message.includes('Got: null')) {
+      throw new Error('Could not find element');
+    }
     const line = message.split('\n').find(s => s.includes('Got:'));
     const matches = line.match(/^\s*Got: "([a-zA-Z0-9-]+)\{(.*)\}"\s*$/);
     if (matches) {

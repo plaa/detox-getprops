@@ -58,6 +58,28 @@ const iosMessages = {
 `
 };
 
+const iosNotFound = `Cannot find UI Element.
+    Exception with Assertion: {
+      "Assertion Criteria":  "assertWithMatcher:(((kindOfClass('UILabel') || kindOfClass('UITextField') || kindOfClass('UITextView')) && hasText('_NOT_PRESENT_')) || (kindOfClass('RCTTextView') && an object with accessibilityLabel "_NOT_PRESENT_"))",
+      "Element Matcher":  "((!(kindOfClass('RCTScrollView')) && ((respondsToSelector(accessibilityIdentifier) && accessibilityID('foobar')) && !(kindOfClass('UIAccessibilityTextFieldElement')))) || (((kindOfClass('UIView') || respondsToSelector(accessibilityContainer)) && parentThatMatches(kindOfClass('RCTScrollView'))) && ((kindOfClass('UIView') || respondsToSelector(accessibilityContainer)) && parentThatMatches(((respondsToSelector(accessibilityIdentifier) && accessibilityID('foobar')) && !(kindOfClass('UIAccessibilityTextFieldElement')))))))",
+      "Recovery Suggestion":  "Check if the element exists in the UI hierarchy printed below. If it exists, adjust the matcher so that it accurately matches element."
+    }
+
+
+    Error Trace: [
+      {
+        "Description":  "Interaction cannot continue because the desired element was not found.",
+        "Error Domain":  "com.google.earlgrey.ElementInteractionErrorDomain",
+        "Error Code":  "0",
+        "File Name":  "GREYElementInteraction.m",
+        "Function Name":  "-[GREYElementInteraction matchedElementsWithTimeout:error:]",
+        "Line":  "124"
+      }
+    ]
+
+    Hierarchy: <UIWindow:0x7fa99ae0dd20; AX=N; AX.frame={{0, 0}, {414, 896}}; AX.activationPoint={207, 448}; AX.traits='UIAccessibilityTraitNone'; AX.focused='N'; frame={{0, 0}, {414, 896}}; opaque; alpha=1>
+      |--<UITransitionView:0x7fa99ae0f570; AX=N; AX.frame={{0, 0}, {414, 896}}; AX.activationPoint={207, 448}; AX.traits='UIAccessibilityTraitNone'; AX.focused='N'; frame={{0, 0}, {414, 896}}; opaque; alpha=1>`;
+
 const androidMessages = {
   "Step' One": `'(with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)' doesn't match the selected view.
 Expected: (with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)
@@ -68,7 +90,13 @@ Expected: (with text: is "_NOT_PRESENT_" and view has effective visibility=VISIB
     Got: "ReactTextView{id=15, visibility=VISIBLE, width=954, height=85, has-focus=false, has-focusable=false, has-window-focus=true, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params=android.view.ViewGroup$LayoutParams@7d5cb36, tag=heading, root-is-layout-requested=false, has-input-connection=false, x=63.0, y=84.0, text=Step, One, input-type=0, ime-target=false, has-links=false}"`
 };
 
+const androidNotFound = `'(with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)' doesn't match the selected view.
+Expected: (with text: is "_NOT_PRESENT_" and view has effective visibility=VISIBLE)
+     Got: null`;
+
 module.exports = {
   iosMessages,
-  androidMessages
+  iosNotFound,
+  androidMessages,
+  androidNotFound
 };
