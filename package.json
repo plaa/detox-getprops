@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Fetch element props using Detox",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "jest"
   },
@@ -12,6 +13,7 @@
   "author": "Sampo Juustila <sampo.juustila@iki.fi>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/runtime": "^7.6.3",
     "detox": "^14.4.1",
     "jest": "^24.9.0"
   },
