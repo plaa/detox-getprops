@@ -1,5 +1,9 @@
 const { expect } = require('detox');
 
+const getText = async elem => {
+  return (await getProps(elem)).text;
+};
+
 const getProps = async elem => {
   try {
     await expect(elem).toHaveText('_unfoundable_text');
@@ -61,6 +65,7 @@ const unquote = str => {
 };
 
 module.exports = {
+  getText,
   getProps,
   parseMessage
 };
