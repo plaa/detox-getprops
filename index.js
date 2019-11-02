@@ -1,35 +1,13 @@
-const { device, expect } = require('detox');
+const { expect } = require('detox');
 
-const fetchText = async elem => {
+const getProps = async elem => {
   try {
     await expect(elem).toHaveText('_unfoundable_text');
-    throw new Error('We never should get here unless target element has unfoundable text');
   } catch (error) {
-    if (device.getPlatform() === 'ios') {
-      const start = `accessibilityLabel was "`;
-      const end = '" on ';
-      const errorMessage = error.message.toString();
-      const [, restMessage] = errorMessage.split(start);
-      const [label] = restMessage.split(end);
-      return label;
-    } else {
-      // Android to be tested
-      const start = 'Got:';
-      const end = '}"';
-      const errorMessage = error.message.toString();
-      if (errorMessage.match(/Got: null/)) {
-        return null;
-      }
-      const [, restMessage] = errorMessage.split(start);
-      const [label] = restMessage.split(end);
-      // console.log('errorMessage=' + errorMessage);
-      // console.log('label=' + label);
-      const value = label.split(',');
-      const combineText = value.find(i => i.includes('text=')).trim();
-      const [, elementText] = combineText.split('=');
-      return elementText;
-    }
+    const msg = error.message.toString();
+    return parseMessage(msg);
   }
+  throw new Error('We never should get here unless target element has unfoundable text');
 };
 
 const parseMessage = message => {
@@ -82,13 +60,7 @@ const unquote = str => {
   }
 };
 
-const getTextBetween = (str, start, end) => {
-  const [, restMessage] = str.split(start);
-  const [label] = restMessage.split(end);
-  return label;
-};
-
 module.exports = {
-  fetchText,
+  getProps,
   parseMessage
 };

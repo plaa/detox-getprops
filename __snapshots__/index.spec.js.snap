@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getProps should return Android props 1`] = `
+Object {
+  "device": "android",
+  "has-focus": "false",
+  "has-focusable": "false",
+  "has-input-connection": "false",
+  "has-window-focus": "true",
+  "height": "85",
+  "id": "15",
+  "ime-target": "false",
+  "input-type": "0",
+  "is-clickable": "false",
+  "is-enabled": "true",
+  "is-focusable": "false",
+  "is-focused": "false",
+  "is-layout-requested": "false",
+  "is-selected": "false",
+  "layout-params": "android.view.ViewGroup$LayoutParams@7d5cb36",
+  "root-is-layout-requested": "false",
+  "tag": "heading",
+  "text": "Step, One",
+  "type": "ReactTextView",
+  "visibility": "VISIBLE",
+  "width": "954",
+  "x": "63.0",
+  "y": "84.0",
+}
+`;
+
+exports[`getProps should return iOS props 1`] = `
+Object {
+  "AX": "Y",
+  "AX.activationPoint": "{187.5, 298.25}",
+  "AX.focused": "N",
+  "AX.frame": "{{24, 283.5}, {327, 29.5}}",
+  "AX.id": "heading",
+  "AX.label": "Step, One",
+  "AX.traits": "UIAccessibilityTraitStaticText",
+  "device": "ios",
+  "frame": "{{24, 0}, {327, 29.5}}",
+  "text": "Step, One",
+  "type": "RCTTextView",
+}
+`;
+
 exports[`parseMessage should parse Android matching string 1`] = `
 Object {
   "device": "android",

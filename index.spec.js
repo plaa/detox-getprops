@@ -1,5 +1,42 @@
-const { parseMessage } = require('./index');
+jest.mock('detox');
+
+const { expect: expectDetox } = require('detox');
+const { getProps, parseMessage } = require('./index');
 const { iosMessages, androidMessages } = require('./exampleMessages');
+
+describe('getProps', () => {
+  it('should return iOS props', async () => {
+    const elem = 'boom';
+    expectDetox.mockImplementation(() => {
+      throw new Error(iosMessages['Step, One']);
+    });
+    const props = await getProps(elem);
+    expect(props).toMatchSnapshot();
+  });
+
+  it('should return Android props', async () => {
+    const elem = 'boom';
+    expectDetox.mockImplementation(() => {
+      throw new Error(androidMessages['Step, One']);
+    });
+    const props = await getProps(elem);
+    expect(props).toMatchSnapshot();
+  });
+
+  it('should throw exception for unknown exception messages', async () => {
+    const elem = 'boom';
+    expectDetox.mockImplementation(() => {
+      throw new Error('Something');
+    });
+    let threw = false;
+    try {
+      await getProps(elem);
+    } catch (e) {
+      threw = true;
+    }
+    expect(threw).toBeTruthy();
+  });
+});
 
 describe('parseMessage', () => {
   it('should parse iOS matching string', () => {
