@@ -13,7 +13,7 @@ Usage:
 ```
 const { getText } = require('detox-getprops');
 
-const text = getText(element(by.id('heading')));
+const text = await getText(element(by.id('heading')));
 expect(text).toEqual('Step One');
 ```
 
@@ -31,13 +31,13 @@ This package should not be used once [Detox #445](https://github.com/wix/detox/i
 
 ### getText
 
-`getText` returns the text from a `<Text>` element. Usage example `getText(element(by.id('heading')))`.
+`getText` returns a promise for the text from a `<Text>` element. Usage example `await getText(element(by.id('heading')))`.
 
 Using `getText` on a non-`<Text>` element is platform-dependent: on iOS it returns the text content of the sub-elements, on Android it returns `undefined`.
 
 ### getProps
 
-`getProps` returns some properties of the element (which can also be a non-`<Text>` element). Usage example `getProps(element(by.id('myview')))`.
+`getProps` returns a promise for some properties of the element (which can also be a non-`<Text>` element). Usage example `await getProps(element(by.id('myview')))`.
 
 The properties are highly platform-dependent. The only common fields are `type` (the underlying component type), `device` (either `android` or `ios`) and `text` (the text content returned by `getText`).
 
