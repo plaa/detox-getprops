@@ -2,6 +2,8 @@
 
 Allows fetching an element text / properties using [Detox](https://github.com/wix/Detox).
 
+The standard Detox API allows fetching element text / attributes on iOS using the [`getAttributes`](https://github.com/wix/Detox/blob/DetoxNext/docs/APIRef.ActionsOnElement.md#getAttributes--ios-only) method, but Android currently has no standard way of fetching element text. This package works on both.
+
 Installation:
 
 ```
@@ -25,7 +27,7 @@ This is a horrible hack/workaround inspired by this [Stack Overflow answer](http
 
 It searches for text that is _not_ present in the element, catches the resulting exception, and parses the platform-dependent error message for the element properties.
 
-This package should not be used once [Detox #445](https://github.com/wix/detox/issues/445) is resolved.
+This package should not be used once [Detox #2083](https://github.com/wix/Detox/issues/2083) is resolved.
 
 ## Methods
 
