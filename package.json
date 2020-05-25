@@ -24,6 +24,6 @@
     ]
   },
   "peerDependencies": {
-    "detox": "^14.4.1"
+    "detox": "*"
   }
 }
