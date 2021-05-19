@@ -52,21 +52,13 @@ const parseMessage = message => {
 
 const parseLine = (str, separator) => {
   const result = {};
-  let matches;
-  var re = new RegExp(`^([a-zA-Z0-9.-]+)=(.*?)${separator}([a-zA-Z0-9.-]+=.*)$`);
-  while ((matches = str.match(re))) {
-    [, key, value, str] = matches;
-    result[key] = unquote(value);
-  }
-  return result;
-};
+  var arrFromString = str.split(separator);
+  arrFromString.forEach(el => {
+    let keyValue = el.split('=');
+    result[keyValue[0]] = keyValue[1];
 
-const unquote = str => {
-  if (str.match(/^'.*'$/)) {
-    return str.substr(1, str.length - 2);
-  } else {
-    return str;
-  }
+  });
+  return result;
 };
 
 module.exports = {
